@@ -1,15 +1,18 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollectableKeys : MonoBehaviour
 {
 
     [SerializeField] private int keys;
+    [SerializeField] private bool allKeys;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         keys = 0;
+        allKeys = false;
     }
 
     // Update is called once per frame
@@ -19,14 +22,15 @@ public class CollectableKeys : MonoBehaviour
 
     private void LateUpdate()
     {
-        KeysCollected();
     }
 
     public void KeysCollected()
     {
-        if(keys == 3)
+        if(keys >= 3)
         {
             Debug.Log("All keys collected!");
+            allKeys = true;
+
         }
     }
 
@@ -34,9 +38,21 @@ public class CollectableKeys : MonoBehaviour
     {
         if (other.CompareTag("Key"))
         {
+            keys++;
+            KeysCollected();
             Debug.Log("Key collected! Total keys: " + keys);
             Destroy(other.gameObject);
-            keys++;
         }
+        if (other.CompareTag("Exit") && allKeys)
+        {
+            Debug.Log("Level completed! You have collected all keys.");
+            SceneManager.LoadScene("EndScreen");
+        }
+        else if (other.CompareTag("Exit") && !allKeys)
+        {
+            Debug.Log("You need to collect all keys before exiting!");
+        }
+
+        Debug.Log("Triggered with: " + other.name);
     }
 }
