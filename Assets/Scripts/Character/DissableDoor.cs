@@ -2,33 +2,53 @@ using UnityEngine;
 
 public class DissableDoor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameObject[] doors;
+    GameObject[] doors2;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        doors = GameObject.FindGameObjectsWithTag("Door");
+        doors2 = GameObject.FindGameObjectsWithTag("Door 2");
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Plate"))
         {
-            DisableObjectsByTag("Door");
+            SetDoorsActive(false);
+        }
+
+        if (other.CompareTag("Plate 2"))
+        {
+            SetDoors2Active(false);
         }
     }
 
-    void DisableObjectsByTag(string tag)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
-
-        foreach (GameObject obj in objects)
+        if (other.CompareTag("Plate"))
         {
-            obj.SetActive(false);
+            SetDoorsActive(true);
+        }
+
+        if (other.CompareTag("Plate 2"))
+        {
+            SetDoors2Active(true);
+        }
+    }
+
+    void SetDoorsActive(bool state)
+    {
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(state);
+        }
+    }
+    void SetDoors2Active(bool state)
+    {
+        foreach (GameObject door in doors2)
+        {
+            door.SetActive(state);
         }
     }
 }

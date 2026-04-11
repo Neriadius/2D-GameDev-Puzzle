@@ -10,6 +10,9 @@ TagManager:
   - Box
   - Plate
   - Door
+  - End
+  - Plate 2
+  - Door 2
   layers:
   - Default
   - TransparentFX
