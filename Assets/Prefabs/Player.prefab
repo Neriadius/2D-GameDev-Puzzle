@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 6914487143659910176}
   - component: {fileID: 5904760527045692722}
   - component: {fileID: 4315369042022800419}
+  - component: {fileID: 6022586897140843955}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -395,3 +396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9994249514e0864d98bb5c8c7be6b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DissableDoor
+--- !u!114 &6022586897140843955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252946679214642312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a6885feb38ddd4a8288b1abc5f137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevel
