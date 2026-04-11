@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class DissableDoor : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Plate"))
+        {
+            DisableObjectsByTag("Door");
+        }
+    }
+
+    void DisableObjectsByTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(false);
+        }
+    }
+}
