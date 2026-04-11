@@ -26,7 +26,7 @@ public class CollectableKeys : MonoBehaviour
 
     public void KeysCollected()
     {
-        if(keys >= 3)
+        if(keys >= 1)
         {
             Debug.Log("All keys collected!");
             allKeys = true;
