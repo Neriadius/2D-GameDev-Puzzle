@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.DrawRay(transform.position, facingDirection * hit.distance, Color.red);
 
-
         
         float x = UnityEngine.Input.GetAxisRaw("Horizontal");
         float y = UnityEngine.Input.GetAxisRaw("Vertical");
@@ -53,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
         if (x != 0 || y != 0)
         {
             facingDirection = new Vector2(x, y);
-            Debug.Log(facingDirection);
         }
 
         // Push action
@@ -63,20 +61,12 @@ public class PlayerMovement : MonoBehaviour
             TryInteract();
         }
 
-        /*if (input.x != 0) input.y = 0;
-
-        if (input != Vector2.zero)
-        {
-            facingDirection = input;
-            AttemptMove(input);
-        }*/
     }
 
     void TryInteract()
     {
         Debug.Log("TryInteract inited");
         Vector2 origin = transform.position;
-        //float distance = 10f;
 
         //RaycastHit2D hit = Physics2D.Raycast(origin, facingDirection, distance, boxLayer);
 
@@ -91,8 +81,7 @@ public class PlayerMovement : MonoBehaviour
                 if (box.TryPush(facingDirection))
                 {
                     Debug.Log("TryPush inited");
-                    //Vector2 playerTarget = (Vector2)transform.position + facingDirection;
-                    //StartCoroutine(Move(playerTarget));
+                    
                 }
             }
         }

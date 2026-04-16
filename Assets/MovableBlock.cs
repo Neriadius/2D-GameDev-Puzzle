@@ -6,18 +6,16 @@ public class MovableBlock : MonoBehaviour
     public float moveSpeed = 5f;
     private bool isMoving;
 
-    public Vector2 ray_dir = Vector2.up;
+    public Vector2 ray_dir = Vector2.left;
     public LayerMask obstacleLayer;
     public LayerMask boxLayer;
 
     public void Update()
     {
         Vector2 origin = transform.position;
-        float distance = 1f;
-        origin.y = origin.y + 1f;
+        origin.y = origin.y + 0.5f;
 
-        // Check forward tile
-        Debug.DrawRay(origin, ray_dir, Color.blue, 1f);
+        Debug.DrawRay(origin, ray_dir, Color.yellow, 1f);
     }
 
     public bool TryPush(Vector2 dir)
@@ -28,31 +26,11 @@ public class MovableBlock : MonoBehaviour
             return false;
         }
 
-        /*Vector2 targetPos = (Vector2)transform.position + dir;
-
-        // Check for wall
-        Collider2D wall = Physics2D.OverlapCircle(targetPos, 0.2f, obstacleLayer);
-        if (wall != null) {
-            Debug.Log("TryPush is " + false + "obstacleLayer overlap");
-            return false;
-        }
-
-        // Check for another box
-        Collider2D otherBox = Physics2D.OverlapCircle(targetPos, 0.2f, boxLayer);
-        if (otherBox != null) {
-            Debug.Log("TryPush is " + false + "boxLayer overlap");
-            return false; 
-        }
-
-        StartCoroutine(Move(targetPos));
-
-        Debug.Log("TryPush is " + true);
-        return true;*/
-
         ray_dir = dir;
-        Vector2 origin = transform.position;
-        float distance = 1f;
-        origin.y = origin.y + 1f;
+        Vector2 origin = (Vector2)transform.position + dir * 0.55f;
+        origin.y = origin.y + 0.5f;
+        Debug.Log("TryPush target origin is in " + origin);
+        float distance = 0.4f;
 
         // Check forward tile
         RaycastHit2D wallHit = Physics2D.Raycast(origin, ray_dir, distance, obstacleLayer);
@@ -61,11 +39,11 @@ public class MovableBlock : MonoBehaviour
         Debug.DrawRay(origin, ray_dir, Color.blue, 1f);
 
         if (wallHit.collider != null) {
-            Debug.Log("TryPush is " + false + "obstacleLayer overlap");
+            Debug.Log("TryPush is " + false + ", obstacleLayer overlap");
             return false; 
         }
         if (boxHit.collider != null) {
-            Debug.Log("TryPush is " + false + "boxLayer overlap");
+            Debug.Log("TryPush is " + false + ", boxLayer overlap");
             return false; 
         }
 
