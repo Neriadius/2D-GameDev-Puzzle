@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Plan B/Level3.unity
     guid: 80384183f1fab6548a15ca681e02a774
+  - enabled: 1
+    path: Assets/Scenes/BoxTest.unity
+    guid: 167fc07409613bf4fbf70ad2cd3cc6d4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d1cf51a3fc5e9c745b7603b9fae4e2a3,
       type: 2}
